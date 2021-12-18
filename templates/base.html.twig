@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+            {{ encore_entry_link_tags('styles') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}
+            {% block header %}
+                <header>
+                    <div class="collapse bg-dark" id="navbarHeader">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-8 col-md-7 py-4">
+                                    <h4 class="text-white">About</h4>
+                                    <p class="text-muted">Educational project.</p>
+                                </div>
+                                <div class="col-sm-4 offset-md-1 py-4">
+                                    <h4 class="text-white">Contact</h4>
+                                    <ul class="list-unstyled">
+{#                                        <li><a href="#" class="text-white">Follow on Twitter</a></li>#}
+{#                                        <li><a href="#" class="text-white">Like on Facebook</a></li>#}
+                                        <li><a href="mailto:userapispotify@gmail.com" class="text-white">Email me: userapispotify@gmail.com</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="navbar navbar-dark bg-dark shadow-sm">
+                        <div class="container">
+                            <a href="#" class="navbar-brand d-flex align-items-center">
+                                <strong>{% block name_page %}{% endblock %}</strong>
+                            </a>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                        </div>
+                    </div>
+                </header>
+            {% endblock %}
+
+            {% block content %}
+                {# This block will be the container of the content page. #}
+            {% endblock %}
+
+            {% block footer %}
+                <footer class="text-muted py-5">
+                    <div class="container">
+                        <p class="float-end mb-1">
+                            <a href="#">Back to top</a>
+                        </p>
+                        <p class="mb-1">Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
+                        <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="../getting-started/introduction/">getting started guide</a>.</p>
+                    </div>
+                </footer>
+            {% endblock %}
+        {% endblock %}
+    </body>
+</html>

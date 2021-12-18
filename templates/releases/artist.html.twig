@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block name_page %}
+    Artist
+{% endblock %}
+
+{% block content %}
+
+    <div class="container mt-3">
+        <a href="{{ path('releases') }}" class="float-end">Back to list</a>
+    </div>
+    <div class="container mt-5">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 text-center">
+                    <img class="rounded-circle z-depth-2" alt="100x100"
+                         src="{{ artist.images.1.url }}"
+                         data-holder-rendered="true">
+                </div>
+                <div class="col-md-6 mt-4 align-self-center">
+                    <div class="row">Artist: {{ artist.name }}</div>
+                    <div class="row">Followers: {{ artist.followers.total|number_format(0, ',', '.') }}</div>
+                    <div class="row">
+                        Genres:
+                        <div>
+                            <ul>
+                                {% for genre in artist.genres %}
+                                    <li>{{ genre }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="mt-5" style="color: #0056b2;" />
+
+            <div class="row">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Photo</th>
+                            <th scope="col">Album</th>
+                            <th scope="col">Song</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for song in artistTopTrack.tracks %}
+                            <tr>
+                                <td><img src="{{ song.album.images.2.url }}" alt="Album Image"></td>
+                                <td>{{ song.album.name }}</td>
+                                <td>{{ song.name }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
